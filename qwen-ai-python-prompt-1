@@ -1,0 +1,37 @@
+   python
+
+# Direct Link  https://chat.qwen.ai/s/1a7a368e-e607-46df-98fd-f5419c568338?fev=0.0.237
+
+{
+
+    "instruction": "Convert the following request to JSON format",
+
+    "task": "Prepare a training exercise using the Oflameron WORDS method for learning English",
+
+    "topic": "Spending a whole day in Berlin exploring the city",
+
+    "word_count": 15,
+
+    "algorithm": [
+
+        "Transform each selected English word into a one-dimensional matrix (list) of its letters — this is the source matrix.",
+
+        "Randomly shuffle the elements of each source matrix (using exactly one random permutation per word) to produce a target matrix.",
+
+        "Construct a 'special word' by concatenating all elements of the target matrix into a single string with no spaces.",
+
+        "Store the mapping between each original English word and its special word, and record the character count for each."
+
+    ],
+
+    "output_requirements": {
+
+        "language": "English",
+
+        "content": "Write a coherent text on the topic 'Spending a whole day in Berlin exploring the city', using the original 15 English words—but replace each with its corresponding special word.",
+
+        "format": "Display only the final completed English text. Do not include intermediate data, explanations, or the original words in the output."
+
+    }
+
+}
