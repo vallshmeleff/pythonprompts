@@ -1,0 +1,130 @@
+# Learn foreign languages with AI perplexity.ai
+import random
+
+
+
+# Method: Oflameron WORD (c) by Valery Shmelev
+
+# Task: Prepare a language learning exercise using 15 English words on the theme "I travel across the USA by car"
+
+
+
+# Step 1: Define the 15 English source words relevant to "traveling by car in the USA"
+
+source_words = [
+
+    "highway", "roadtrip", "map", "gasoline", "mileage",
+
+    "car", "engine", "driver", "license", "traffic",
+
+    "exit", "reststop", "parking", "toll", "route"
+
+]
+
+
+
+# Step 2: Process each word into a one-dimensional matrix (list of letters)
+
+# Step 3: Randomly shuffle the letters to form target matrix and create a special word from the target matrix
+
+def process_words(words):
+
+    processed = []
+
+    for word in words:
+
+        original_matrix = list(word)
+
+        original_len = len(original_matrix)
+
+        shuffled_matrix = original_matrix.copy()
+
+        while True:
+
+            random.shuffle(shuffled_matrix)
+
+            if len(shuffled_matrix) == original_len:
+
+                break
+
+        special_word = ''.join(shuffled_matrix)
+
+        special_len = len(special_word)
+
+        processed.append({
+
+            "original_word": word,
+
+            "original_len": original_len,
+
+            "original_matrix": original_matrix,
+
+            "shuffled_matrix": shuffled_matrix,
+
+            "special_word": special_word,
+
+            "special_len": special_len
+
+        })
+
+    return processed
+
+
+
+processed_words = process_words(source_words)
+
+
+
+# Step 4 & 5 are implicit in above: kept counts and special words memorized
+
+
+
+# Generate a learning text with 5-6 sentences replacing original words by special words
+
+def generate_learning_text(processed):
+
+    # Map original words to special words for substitution in sentences
+
+    word_map = {p["original_word"]: p["special_word"] for p in processed}
+
+
+
+    text = [
+
+        f"We started our journey on the {word_map['highway']} that led us through beautiful landscapes. (highway)",
+
+        f"Our {word_map['roadtrip']} was planned carefully using a detailed {word_map['map']}. (roadtrip, map)",
+
+        f"The {word_map['car']} needed refueling with fresh {word_map['gasoline']} before continuing. (car, gasoline)",
+
+        f"Our skilled {word_map['driver']} checked the {word_map['engine']} and ensured the {word_map['license']} was valid. (driver, engine, license)",
+
+        f"We faced heavy {word_map['traffic']} near the {word_map['exit']}, but quickly found a safe {word_map['reststop']}. (traffic, exit, reststop)",
+
+        f"Finally, we found {word_map['parking']} after paying the {word_map['toll']} and followed a scenic {word_map['route']}. (parking, toll, route)"
+
+    ]
+
+    return "\n".join(text)
+
+
+
+final_text = generate_learning_text(processed_words)
+
+
+
+# Print the processed words data and the generated learning text
+
+def print_results(processed, text):
+
+    for p in processed:
+
+        print(f"{p['original_word']}, {p['original_len']}, {p['original_matrix']}, {p['shuffled_matrix']}, {p['special_word']}, {p['special_len']}")
+
+    print("\nLearning Text:\n")
+
+    print(text)
+
+# Direct Link  https://www.perplexity.ai/search/davai-podgotovim-uchebnoe-upra-OIdSOxCnSD25575BpSQMHA#6
+
+print_results(processed_words, final_text)
