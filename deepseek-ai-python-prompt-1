@@ -1,0 +1,55 @@
+python
+import json
+import random
+
+# Not all AIs were able to complete the Oflameron WORDS test.
+
+# chat.deepseek.com
+# Step 1: Prepare the English words
+english_words = [
+    "morning", "breakfast", "sightseeing", "museum", "landmark",
+    "lunch", "architecture", "history", "walking", "gallery",
+    "afternoon", "coffee", "shopping", "evening", "dinner"
+]
+
+# Steps 1-4: Process each word
+word_data = []
+
+for word in english_words:
+    # Step 1: Create source matrix (split into letters)
+    source_matrix = list(word)
+    
+    # Step 2: Randomly reorder elements
+    target_matrix = source_matrix.copy()
+    random.shuffle(target_matrix)
+    
+    # Step 3: Create special word
+    special_word = ''.join(target_matrix)
+    
+    # Step 4: Store data
+    word_data.append({
+        "original_word": word,
+        "special_word": special_word,
+        "character_count": len(word)
+    })
+
+# Create the exercise text
+exercise_text = """
+Spending a Whole Day in Berlin Exploring the City
+
+Start your day early in the {0}. After a quick German {1}, begin your {2} tour. 
+First, visit a famous {3} like the Pergamon. Then head to a historic {4} such as the Brandenburg Gate.
+
+For {5}, try traditional German cuisine at a local restaurant. Admire the stunning {6} 
+while learning about the city's rich {7}. Continue {8} through the charming streets.
+
+Visit a modern art {9} in the {10}. Take a break with a cup of German {11} 
+before some souvenir {12}. As the {13} approaches, find a nice restaurant for {14} 
+and reflect on your amazing day exploring Berlin.
+""".format(
+    *[data["special_word"] for data in word_data]
+)
+
+# Display only the final exercise text
+print(exercise_text)
+# Direct Link  https://chat.deepseek.com/share/e8gfzra0zo9xwgrgpv 
