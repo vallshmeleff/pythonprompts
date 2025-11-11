@@ -1,4 +1,4 @@
-# Learn foreign languages with AI perplexity.ai
+# Learn foreign languages with AI perplexity.ai Request to AI perlexity.ai to generate an exercise in the Oflameron WORDS format for effective learning of foreign languages ​​with AI
 import random
 
 
@@ -128,3 +128,4 @@ def print_results(processed, text):
 # Direct Link  https://www.perplexity.ai/search/davai-podgotovim-uchebnoe-upra-OIdSOxCnSD25575BpSQMHA#6
 
 print_results(processed_words, final_text)
+
