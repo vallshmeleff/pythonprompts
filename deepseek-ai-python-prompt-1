@@ -1,4 +1,5 @@
-python
+# python
+# Request to AI chat.deepseek.com to generate an exercise in the Oflameron WORDS format for effective learning of foreign languages ​​with AI
 import json
 import random
 
@@ -53,3 +54,4 @@ and reflect on your amazing day exploring Berlin.
 # Display only the final exercise text
 print(exercise_text)
 # Direct Link  https://chat.deepseek.com/share/e8gfzra0zo9xwgrgpv 
+# Oflameron WORDS (c) by Valery Shmelev
