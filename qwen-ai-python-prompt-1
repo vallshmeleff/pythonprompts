@@ -1,5 +1,6 @@
    python
 
+# Request to AI chat.qwen.ai to generate an exercise in the Oflameron WORDS format for effective learning of foreign languages ​​with AI
 # This simple query was impossible for most AI systems to complete without errors.
 # Direct Link  https://chat.qwen.ai/s/1a7a368e-e607-46df-98fd-f5419c568338?fev=0.0.237
 
@@ -36,3 +37,5 @@
     }
 
 }
+
+# Oflameron WORDS (c) by Valery Shmelev
