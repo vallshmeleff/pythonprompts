@@ -38,7 +38,8 @@
 
 }
 
-# Oflameron WORDS (c) by Valery Shmelev
+# http://oflameron.ru/Valery_Shmelev_2eng.pdf 
+
 # Notes:
 # Oflameron WORDS - a method for effectively learning foreign languages ​​using AI. The method was developed by Valery Shmelev in 1994. With the development of AI, it has come to be used to generate learning exercises.
 # The Oflameron WORDS method asks students to read a text in the target language. In the text, some words are replaced with special words (special words). In these words, all the letters are randomly rearranged. The number of letters and the set of letters in the special words strictly correspond to the original word.
