@@ -1,0 +1,114 @@
+# deepseek Python prompt
+# Using chat.deepseek.com AI, we'll generate a Python function that implements a request to generate an exercise in the Oflameron OBJECT format for learning foreign languages. In this example, we'll use the German language.
+
+# About the Oflameron OBJECT ( Copyright by Valery Shmelev) method:
+
+# The Oflameron OBJECT method involves replacing some words in the exercise text with small pictures (pictograms). The student must read the text and substitute foreign words for the pictures. For an English-speaking student, generate a 5-6-sentence exercise on the topic "We arrived in Berlin and are going to the hotel by taxi" in the Oflameron OBJECT format for learning German.
+
+import openai
+import json
+
+def generate_oflameron_exercise(api_key, target_language, student_language, topic, num_sentences=5):
+"""
+Generates an exercise in the Oflameron OBJECT format for learning a foreign language.
+
+Args:
+api_key (str): API key for OpenAI
+target_language (str): language being learned (e.g., "German")
+student_language (str): student's native language (e.g., "English")
+topic (str): exercise topic
+num_sentences (int): number of sentences
+
+Returns:
+dict: structured exercise
+"""
+
+openai.api_key = api_key
+
+prompt = f"""
+Create an exercise for learning the {target_language} language in the Oflameron OBJECT format.
+
+Requirements:
+1. Topic: "{topic}"
+2. {num_sentences} sentences in {target_language}
+3. For a student who speaks {student_language}
+4. Replace some nouns in the text with icons [ICON]
+5. Create a dictionary with translations in {student_language}
+
+Return the response in JSON format:
+{{
+"exercise_title": "title",
+"instructions": "instructions for a student",
+"word_bank": [
+{{"german": "word", "english": "translation", "icon": "icon"}}
+],
+"sentences_with_icons": [
+"sentence with [ICON]"
+],
+"answer_key": [
+"full sentence"
+]
+}}
+
+Use a variety of icons: 📝✈️🚗🏨💰👨‍🍳 etc.
+"""
+
+try:
+response = openai.ChatCompletion.create(
+model="gpt-3.5-turbo",
+messages=[
+{"role": "system", "content": "You are an expert in creating language learning materials."},
+{"role": "user", "content": prompt}
+],
+temperature=0.7,
+max_tokens=1500
+)
+
+# Parse the JSON response
+content = response.choices[0].message.content
+exercise_data = json.loads(content)
+
+return exercise_data
+
+except Exception as e:
+print(f"Error generating exercise: {e}")
+return None
+
+def print_exercise(exercise_data):
+"""Pretty prints the exercise"""
+if not exercise_data:
+print("Failed to generate exercise")
+return
+
+print("=" * 50)
+print(f"🎯 {exercise_data['exercise_title']}")
+print("=" * 50)
+print(f"📝 {exercise_data['instructions']}")
+print("\n" + "🗂️ DICTIONARY:".ljust(20))
+
+for word in exercise_data['word_bank']:
+print(f" {word['icon']} - {word['german']} ({word['english']})")
+
+print("\n" + "📖 EXERCISE:".ljust(20))
+for i, sentence in enumerate(exercise_data['sentences_with_icons'], 1):
+print(f" {i}. {sentence}")
+
+print("\n" + "🔑 ANSWERS:".ljust(20))
+for i, answer in enumerate(exercise_data['answer_key'], 1):
+print(f" {i}. {answer}")
+
+# Example of use
+if __name__ == "__main__":
+# Replace with your API key
+API_KEY = "your-openai-api-key-here"
+
+exercise = generate_oflameron_exercise(
+api_key=API_KEY,
+target_language="German",
+student_language="English",
+topic="We arrived in Berlin and are going to the hotel by taxi",
+num_sentences=6
+)
+
+if exercise:
+print_exercise(exercise)
